@@ -1,10 +1,10 @@
 doctype html
-html(ng-app="app")
+html(ng-app='testMoviesApp')
     head
         block title
         link(rel='stylesheet', href='css/app.css')
 
-    body(ng-controller="appCtrl")
+    body(ng-controller='appCtrl')
         nav.navbar.navbar-default
             .container-fluid
                 .navbar-header
@@ -33,4 +33,6 @@ html(ng-app="app")
         .container
             block content
 
-        script(src="js/app.js")
+        script(src='js/app.js')
+        //- script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js')
+        //- script(src='http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js')
