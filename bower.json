@@ -5,7 +5,14 @@
     "Luis Izquierdo <luis.izquierdo@protonmail.com>"
   ],
   "description": "Test project with movie list and detail with fake login. Build with Angular 1.4, Bootstrap 3, Jade, Gulp and Bower",
-  "main": "index.html",
+  "main": [
+    "./dist/css/bootstrap.css",
+    "./dist/js/bootstrap.js",
+    "./dist/fonts/glyphicons-halflings-regular.eot",
+    "./dist/fonts/glyphicons-halflings-regular.svg",
+    "./dist/fonts/glyphicons-halflings-regular.ttf",
+    "./dist/fonts/glyphicons-halflings-regular.woff"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -17,6 +24,7 @@
   "dependencies": {
     "angular": "1.4.14",
     "jade": "^1.11.0",
-    "bootstrap-sass": "^3.4.1"
+    "bootstrap-sass": "^3.4.1",
+    "angular-route": "1.4.14"
   }
 }
