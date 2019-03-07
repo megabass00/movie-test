@@ -17,3 +17,21 @@ npm gulp
 
 # Open in your browser 'dist/index.html'
 ~~~~
+
+If you wish to expand the project you can use gulp task for development:
+~~~~
+# Build sass files
+gulp css
+
+# Build javascript files
+gulp js
+
+# Build fonts
+gulp fonts
+
+# Build jade template files
+gulp templates
+
+# Build entire project
+gulp
+~~~~
