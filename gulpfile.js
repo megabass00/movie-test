@@ -11,7 +11,6 @@ const srcPaths = {
     bootstrapDir: './bower_components/bootstrap-sass',
     devDir: './dev',
     sassPath: './dev/css',
-    // distDir: './dist'
 };
 const targetPaths = {
     cssDir: './dist/css',
@@ -20,9 +19,10 @@ const targetPaths = {
     viewsDir: './dist'
 }
 const JsScripts = [
-    srcPaths.bootstrapDir + '/assets/javascripts/bootstrap.min.js',
     srcPaths.bowerDir + '/jquery/dist/jquery.min.js',
-    srcPaths.bowerDir + '/angular/angular.min.js'
+    srcPaths.bootstrapDir + '/assets/javascripts/bootstrap.min.js',
+    srcPaths.bowerDir + '/angular/angular.min.js',
+    srcPaths.devDir + '/controllers/main-controller.js'
 ];
 
 gulp.task('watch', () => {
