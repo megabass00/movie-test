@@ -1,0 +1,27 @@
+@import "variables";
+@import "bootstrap";
+@import "bootstrap/theme";
+@import "login";
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.googleapis.com/css?family=Roboto');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.googleapis.com/css?family=Montserrat');
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.title-content {
+    color: green;
+    text-align: center;
+}
