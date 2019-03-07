@@ -4,7 +4,7 @@ Test project with movie list and detail with fake login. Build with Angular 1.4,
 
 ## To use
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) which comes with [npm](http://npmjs.com) installed on your computer. 
+To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) which comes with [npm](http://npmjs.com) and [bower](https://bower.io/) installed on your computer. 
 ~~~~
 # Clone this repository
 git clone https://github.com/megabass00/movie-test
