@@ -21,6 +21,19 @@ h1, h2, h3, h4 {
     font-family: 'Montserrat', sans-serif;
 }
 
+.navbar {
+    // margin: 0 20px 20px 20px;
+    margin-bottom: 20px;
+    background: $brand-primary;
+
+    li > a {
+        color: white !important;
+    }
+    li > a:hover {
+        color: darken($brand-primary, 40%) !important;
+    }
+}
+
 .title-content {
     color: green;
     text-align: center;
