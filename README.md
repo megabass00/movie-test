@@ -9,10 +9,18 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 # Clone this repository
 git clone https://github.com/megabass00/movie-test
 
+# Enter to project directory
+cd movie-test
+
+# Install bower and gulp globally, and download dependencies
+npm install -g bower
+npm install --global gulp
+npm install && bower install
+
 # Build project
 gulp
 
-# also with npm
+# ...also with npm
 npm gulp
 
 # Open in your browser 'dist/index.html'
