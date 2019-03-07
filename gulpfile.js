@@ -6,46 +6,58 @@ const uglify = require('gulp-uglify');
 const jade = require('gulp-jade');
 const inject = require('gulp-inject');
 
-var config = {
+const srcPaths = {
+    bowerDir: './bower_components',
     bootstrapDir: './bower_components/bootstrap-sass',
     devDir: './dev',
     sassPath: './dev/css',
-    distDir: './dist'
+    // distDir: './dist'
 };
+const targetPaths = {
+    cssDir: './dist/css',
+    fontsDir: './dist/fonts',
+    jsDir: './dist/js',
+    viewsDir: './dist'
+}
+const JsScripts = [
+    srcPaths.bootstrapDir + '/assets/javascripts/bootstrap.min.js',
+    srcPaths.bowerDir + '/jquery/dist/jquery.min.js',
+    srcPaths.bowerDir + '/angular/angular.min.js'
+];
 
 gulp.task('watch', () => {
-    gulp.watch(config.sassPath + '/*.scss', gulp.series('css'));
-    gulp.watch(config.devDir + '/**/*.js', gulp.series('js'));
-    gulp.watch(config.devDir + '/**/*.jade', gulp.series('templates'));
+    gulp.watch(srcPaths.sassPath + '/*.scss', gulp.series('css'));
+    gulp.watch(srcPaths.devDir + '/**/*.js', gulp.series('js'));
+    gulp.watch(srcPaths.devDir + '/**/*.jade', gulp.series('templates'));
 })
 
 gulp.task('js', () => {
-    return gulp.src(config.devDir + '/**/*.js')
+    return gulp.src(JsScripts)
                 .pipe(concat('app.js'))
                 .pipe(uglify())
-                .pipe(gulp.dest(config.distDir + '/js'));
+                .pipe(gulp.dest(targetPaths.jsDir));
 });
 
 gulp.task('css', () => {
-    return gulp.src(config.sassPath + '/app.scss')
+    return gulp.src(srcPaths.sassPath + '/app.scss')
                 .pipe(sass({
-                    includePaths: [config.bootstrapDir + '/assets/stylesheets'],
+                    includePaths: [srcPaths.bootstrapDir + '/assets/stylesheets'],
                 }))
                 .pipe(minifyCss())
-                .pipe(gulp.dest(config.distDir + '/css'));
+                .pipe(gulp.dest(targetPaths.cssDir));
 });
 
 gulp.task('fonts', () => {
-    return gulp.src(config.bootstrapDir + '/assets/fonts/**/*')
-                .pipe(gulp.dest(config.distDir + '/fonts'));
+    return gulp.src(srcPaths.bootstrapDir + '/assets/fonts/**/*')
+                .pipe(gulp.dest(targetPaths.fontsDir));
 });
 
 gulp.task('templates', () => {
-    return gulp.src(config.devDir + '/views/**/*.jade')
+    return gulp.src(srcPaths.devDir + '/views/**/*.jade')
                 .pipe(jade({
                     pretty: true
                 }))
-                .pipe(gulp.dest(config.distDir));
+                .pipe(gulp.dest(targetPaths.viewsDir));
 });
 
 
