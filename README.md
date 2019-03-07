@@ -9,8 +9,11 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 # Clone this repository
 git clone https://github.com/megabass00/movie-test
 
-# Run the app
-npm start
+# Build project
+gulp
 
-# Open in your browser: http://localhost:3000
+# also with npm
+npm gulp
+
+# Open in your browser 'dist/index.html'
 ~~~~
