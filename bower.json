@@ -1,0 +1,22 @@
+{
+  "name": "movie-test",
+  "homepage": "https://github.com/megabass00/movie-test",
+  "authors": [
+    "Luis Izquierdo <luis.izquierdo@protonmail.com>"
+  ],
+  "description": "Test project with movie list and detail with fake login. Build with Angular 1.4, Bootstrap 3, Jade, Gulp and Bower",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.4.14",
+    "jade": "^1.11.0",
+    "bootstrap-sass": "^3.4.1"
+  }
+}

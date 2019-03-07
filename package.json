@@ -1,0 +1,29 @@
+{
+  "name": "movie-test",
+  "version": "1.0.0",
+  "description": "Test project with movie list and detail with fake login. Build with Angular 1.4, Bootstrap 3, Jade, Gulp and Bower",
+  "scripts": {
+    "test": "echo 'testing'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megabass00/movie-test.git"
+  },
+  "author": "Luis Izquierdo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megabass00/movie-test/issues"
+  },
+  "homepage": "https://github.com/megabass00/movie-test#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-bower": "0.0.14",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject": "^5.0.2",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1"
+  },
+  "dependencies": {}
+}
