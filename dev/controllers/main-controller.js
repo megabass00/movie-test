@@ -1,5 +1,6 @@
 angular.module('testMoviesApp', ['ngRoute'])
-.config(function($routeProvider) {
+.config(function($routeProvider, $httpProvider) {
+    $httpProvider.interceptors.push('LoginService');
     $routeProvider
         .when('/login', { 
             controller: 'LoginCtrl',
@@ -20,9 +21,37 @@ angular.module('testMoviesApp', ['ngRoute'])
             redirectTo: '/login'
         });
 })
-.controller('LoginCtrl', function($scope) {
+.factory("LoginService", ['$timeout', function ($timeout) {
+    var service = {};
+    service.Login = function (username, password, callback) {
+        $timeout(function(){
+            var response = { success: username === 'test' && password === 'test' };
+            if(!response.success) {
+                response.message = 'Username or password is incorrect';
+            }
+            callback(response);
+        }, 1000);
+    };
+    return service;
+}])
+.controller('LoginCtrl', ['$scope', '$location', 'LoginService', function($scope, $location, LoginService) {
     console.log('**** Login');
-})
+    $scope.loading = false;
+
+    $scope.login = function () {
+        $scope.loading = true;
+        console.log('Login with', $scope.username, $scope.password);
+        LoginService.Login($scope.username, $scope.password, function(response) {
+            console.log(response);
+            if(response.success) {
+                $location.path('/movies');
+            } else {
+                $scope.error = response.message;
+                $scope.loading = false;
+            }
+        });
+    };
+}])
 .controller('MoviesCtrl', function($scope, $http) {
     console.log('**** Movies');
     const apiKey = 'f12ba140';
@@ -40,7 +69,6 @@ angular.module('testMoviesApp', ['ngRoute'])
         console.log('Request URL', requestUrl);
         $http.get(requestUrl)
             .success(function(data) {
-                // console.log(data);
                 if (data.Response == 'True') {
                     $scope.totalResults = data.totalResults;
                     $scope.results = data.Search;
@@ -55,6 +83,9 @@ angular.module('testMoviesApp', ['ngRoute'])
             });
     };
 
+    $scope.addToFav = function(id) {
+        console.log('ID', id);
+    }
 })
 .controller('DetailCtrl', function($scope) {
     console.log('**** Detail');
