@@ -12,9 +12,10 @@ git clone https://github.com/megabass00/movie-test
 # Enter to project directory
 cd movie-test
 
-# Install bower and gulp globally, and download dependencies
+# Install bower, gulp and http-serve globally, and download dependencies
 npm install -g bower
-npm install --global gulp
+npm install --g gulp
+npm install -g http-server
 npm install && bower install
 
 # Build project
@@ -23,7 +24,8 @@ gulp
 # ...also with npm
 npm gulp
 
-# Open in your browser 'dist/index.html'
+# Open in your browser
+cd dist && http-server -o
 ~~~~
 
 If you wish to expand the project you can use gulp task for development:
