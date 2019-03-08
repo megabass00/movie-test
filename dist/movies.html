@@ -1,2 +1,23 @@
 
-<h1>MOVIES</h1>
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-film"></span></span>
+      <input type="text" placeholder="Search your movie..." ng-model="textToSearch" autofocus="autofocus" class="form-control"/><span class="input-group-btn">
+        <button ng-click="searchMovies()" class="btn btn-primary">Search</button></span>
+    </div>
+  </div>
+</div>
+<div ng-show="results.length &gt; 0" class="container">
+  <div ng-repeat="movie in results" class="card-movie col-lg-3 col-md-6 col-sm-12">
+    <div class="image"><img src="{{ movie.Poster }}"/></div>
+    <div class="body">
+      <h3 class="title brand-color"> <a href="#/detail/{{ movie.imdbID }}">{{ movie.Title }}</a></h3>
+      <p class="identifier">Identifier:<span>{{ movie.imdbID }}</span></p>
+      <p class="year">Year: <span>{{ movie.Title }}</span></p>
+      <p class="year">Type: <span>{{ movie.Type }}</span></p>
+    </div>
+  </div>
+</div>
+<div ng-show="results.length &lt;= 0 &amp;&amp; searching" class="container">
+  <div class="row preload">Searching...</div>
+</div>

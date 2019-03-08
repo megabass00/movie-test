@@ -1,1 +1,28 @@
-h1 MOVIES
+.row
+    .col-lg-8.col-lg-offset-2
+        .input-group
+            span.input-group-addon
+                span.glyphicon.glyphicon-film
+            input.form-control(type="text", placeholder="Search your movie...", ng-model="textToSearch", autofocus)
+            span.input-group-btn
+                button.btn.btn-primary(ng-click="searchMovies()") Search
+
+.container(ng-show="results.length > 0")
+    .card-movie.col-lg-3.col-md-6.col-sm-12(ng-repeat="movie in results")
+        .image
+            img(src="{{ movie.Poster }}")
+        .body
+            h3.title.brand-color 
+                a(href="#/detail/{{ movie.imdbID }}") {{ movie.Title }}
+            p.identifier Identifier:
+                span {{ movie.imdbID }}
+            p.year Year: 
+                span {{ movie.Title }}
+            p.year Type: 
+                span {{ movie.Type }}
+
+.container(ng-show="results.length <= 0 && searching")
+    .row.preload Searching...
+
+
+
