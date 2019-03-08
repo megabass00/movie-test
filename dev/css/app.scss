@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "bootstrap/theme";
 @import "login";
+@import "movies";
 
 @font-face {
     font-family: 'Roboto';
@@ -22,7 +23,6 @@ h1, h2, h3, h4 {
 }
 
 .navbar {
-    // margin: 0 20px 20px 20px;
     margin-bottom: 20px;
     background: $brand-primary;
 
@@ -32,6 +32,10 @@ h1, h2, h3, h4 {
     li > a:hover {
         color: darken($brand-primary, 40%) !important;
     }
+}
+
+.brand-color {
+    color: $brand-primary !important;
 }
 
 .title-content {
