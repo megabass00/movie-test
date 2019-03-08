@@ -1,5 +1,5 @@
 .row
-    .col-lg-8.col-lg-offset-2
+    .col-lg-8.col-lg-offset-2.searcher
         .input-group
             span.input-group-addon
                 span.glyphicon.glyphicon-film
@@ -8,18 +8,25 @@
                 button.btn.btn-primary(ng-click="searchMovies()") Search
 
 .container(ng-show="results.length > 0")
-    .card-movie.col-lg-3.col-md-6.col-sm-12(ng-repeat="movie in results")
+    .card-movie.col-lg-4.col-md-6.col-sm-12(ng-repeat="movie in results")
         .image
             img(src="{{ movie.Poster }}")
         .body
             h3.title.brand-color 
                 a(href="#/detail/{{ movie.imdbID }}") {{ movie.Title }}
-            p.identifier Identifier:
+            p.identifier Identifier
+                br
                 span {{ movie.imdbID }}
-            p.year Year: 
-                span {{ movie.Title }}
-            p.year Type: 
+            p.year Year
+                br
+                span {{ movie.Year }}
+            p.year Type
+                br
                 span {{ movie.Type }}
+        .footer
+            a(ng-click="addToFav(movie.imdbID)") Add to favourites
+                i.fas.fa-heart
+                i.far.fa-heart
 
 .container(ng-show="results.length <= 0 && searching")
     .row.preload Searching...
