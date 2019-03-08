@@ -21,9 +21,9 @@ const targetPaths = {
 const JsScripts = [
     srcPaths.bowerDir + '/angular/angular.min.js',
     srcPaths.bowerDir + '/angular-route/angular-route.min.js',
-    srcPaths.devDir + '/components/main-controller.js',
     srcPaths.bowerDir + '/jquery/dist/jquery.min.js',
-    srcPaths.bootstrapDir + '/assets/javascripts/bootstrap.min.js'
+    srcPaths.bootstrapDir + '/assets/javascripts/bootstrap.min.js',
+    srcPaths.devDir + '/components/main-controller.js'
 ];
 
 gulp.task('watch', () => {
@@ -35,8 +35,9 @@ gulp.task('watch', () => {
 gulp.task('js', () => {
     return gulp.src(JsScripts)
                 .pipe(concat('app.js'))
-                .pipe(uglify())
-                .on('error', (err) => { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+                // .pipe(uglify()).on('error', (e) => {
+                //     console.log(e);
+                // })
                 .pipe(gulp.dest(targetPaths.jsDir));
 });
 
