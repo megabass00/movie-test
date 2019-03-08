@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Test project with movie list and detail with fake login. Build with Angular 1.4, Bootstrap 3, Jade, Gulp and Bower",
   "scripts": {
-    "test": "echo 'testing'"
+    "build": "gulp",
+    "dev": "gulp watch"
   },
   "repository": {
     "type": "git",
