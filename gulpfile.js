@@ -23,7 +23,8 @@ const JsScripts = [
     srcPaths.bowerDir + '/angular-route/angular-route.min.js',
     srcPaths.bowerDir + '/jquery/dist/jquery.min.js',
     srcPaths.bootstrapDir + '/assets/javascripts/bootstrap.min.js',
-    srcPaths.devDir + '/components/main-controller.js'
+    srcPaths.bowerDir + '/font-awesome/js/fontawesome.min.js',
+    srcPaths.devDir + '/controllers/main-controller.js'
 ];
 
 gulp.task('watch', () => {
@@ -36,7 +37,7 @@ gulp.task('js', () => {
     return gulp.src(JsScripts)
                 .pipe(concat('app.js'))
                 // .pipe(uglify()).on('error', (e) => {
-                //     console.log(e);
+                //     console.log('Uglify error:', e);
                 // })
                 .pipe(gulp.dest(targetPaths.jsDir));
 });
@@ -44,7 +45,10 @@ gulp.task('js', () => {
 gulp.task('css', () => {
     return gulp.src(srcPaths.sassPath + '/app.scss')
                 .pipe(sass({
-                    includePaths: [srcPaths.bootstrapDir + '/assets/stylesheets'],
+                    includePaths: [
+                        srcPaths.bootstrapDir + '/assets/stylesheets', 
+                        srcPaths.bowerDir + '/font-awesome/css/fontawesome.min.cssˆ'
+                    ],
                 }))
                 .pipe(minifyCss())
                 .pipe(gulp.dest(targetPaths.cssDir));
