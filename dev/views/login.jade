@@ -4,11 +4,11 @@
         img.profile-img(src="./img/user-default.png", alt="Avatar")
 
     .body
-        form(action="", class="form col-md-12 center-block")
+        form(ng-submit="login()", class="form col-md-12 center-block")
             .form-group
-                input.form-control.input-lg(type="text", placeholder="Enter your email...", required, autofocus)
+                input.form-control.input-lg(ng-model="username", type="text", placeholder="Enter your email...", required, autofocus)
             .form-group
-                input.form-control.input-lg(type="password", placeholder="Enter your password...",required)
+                input.form-control.input-lg(ng-model="password", type="password", placeholder="Enter your password...", required)
             .form-group
                 button.btn.btn-primary.btn-lg.btn-block Sign In
                 span.pull-right
