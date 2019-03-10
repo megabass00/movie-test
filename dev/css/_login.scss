@@ -2,9 +2,15 @@
     max-width: 60%;
     text-align: center;
     margin: 0 auto;
-    margin-top: 10vh;
+    border: 1px solid #888;
+    border-radius: 10px;
+    padding-bottom: 20px;
 
     .header {
+        .logo {
+            height: 60px;
+            padding-right: 20px;
+        }
         .profile-img {
             border: 8px solid $brand-primary;
             border-radius: 50%;
