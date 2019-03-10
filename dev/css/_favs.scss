@@ -1,0 +1,22 @@
+.favs-title {
+    text-align: center;
+
+    i {
+        margin-left: 10px;
+        color: #fbb03b;
+    }
+}
+
+.fav-container {
+    float: left;
+    margin: 10px 0;
+    text-align: center;
+    
+    .fav {
+        padding: 5px;
+    }
+    .fav img {
+        border-radius: 5px;
+        height: 80px;
+    }
+}
