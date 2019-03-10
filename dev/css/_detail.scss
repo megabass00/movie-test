@@ -1,0 +1,27 @@
+.well {
+    border-radius: 10px;
+
+    small {
+        color: #888;
+    }
+    img {
+        border-radius: 10px;
+        max-height: 100%;
+    }
+    .prop {
+        i { 
+            margin: 5px 10px 0 0;
+            color: #888;
+        }
+        span {
+            font-size: .9em;
+        }
+    }
+    .description {
+        margin-top: 20px;
+    }
+    .btn-fav {
+        min-width: 200px;
+        max-width: 250px;
+    }
+}
