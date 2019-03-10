@@ -24,7 +24,9 @@ const JsScripts = [
     srcPaths.bowerDir + '/jquery/dist/jquery.min.js',
     srcPaths.bootstrapDir + '/assets/javascripts/bootstrap.min.js',
     srcPaths.bowerDir + '/font-awesome/js/fontawesome.min.js',
-    srcPaths.devDir + '/controllers/main-controller.js'
+    srcPaths.devDir + '/js/app.js',
+    srcPaths.devDir + '/js/services.js',
+    srcPaths.devDir + '/js/controllers.js'
 ];
 
 gulp.task('watch', () => {
