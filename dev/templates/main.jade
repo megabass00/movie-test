@@ -5,7 +5,7 @@ html(ng-app='testMoviesApp')
         link(rel='stylesheet', href='css/app.css')
 
     body
-        nav.navbar.navbar-default
+        nav.navbar.navbar-default(ng-controller="NavigationCtrl")
             .container-fluid
                 .navbar-header
                     button.navbar-toggle.collapsed(data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
@@ -13,24 +13,22 @@ html(ng-app='testMoviesApp')
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a.navbar-brand(href="#")
-                        img(src="img/logo.svg")
-
                 #navbar.navbar-collapse.collapse
+                    a.navbar-brand.logo(href="#")
+                        img(src="img/logo.svg")
                     ul.nav.navbar-nav
-                        li
+                        li(ng-show="!loggedUser")
                             a(href="#/login") Login
-                        li
+                        li(ng-show="loggedUser")
+                            a(ng-click="logout()") Logout
+                        li(ng-show="loggedUser")
                             a(href="#/movies") Movies List
+                    ul.nav.navbar-nav.navbar-right(ng-show="loggedUser")
                         li
-                            a(href="#/detail") Detail
+                            a {{ (numFavs > 0) ? numFavs + ' favs' : 'No favs' }}
                         li
-                            a(href="#/contact") Contact
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href="#/") Right 1
-                        li
-                            a(href="#/") About
+                            a(href="#" ng-click="cleanFavs()") Clean Favs
+                        li.username(ng-show="loggedUser") {{ 'Wellcome ' + loggedUser.username }}
 
         .container
             block content
