@@ -1,8 +1,10 @@
 @import "variables";
 @import "bootstrap";
 @import "bootstrap/theme";
+@import "favs";
 @import "login";
 @import "movies";
+@import "detail";
 
 @font-face {
     font-family: 'Roboto';
@@ -25,12 +27,22 @@ h1, h2, h3, h4 {
 .navbar {
     margin-bottom: 20px;
     background: $brand-primary;
-
+    .logo {
+        width: 70px;
+    }
     li > a {
         color: white !important;
     }
     li > a:hover {
         color: darken($brand-primary, 40%) !important;
+    }
+    .username {
+        color: white;
+        display: flex;
+        align-items: center;
+        height: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
     }
 }
 
@@ -38,7 +50,22 @@ h1, h2, h3, h4 {
     color: $brand-primary !important;
 }
 
+button span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .title-content {
     color: green;
     text-align: center;
+}
+
+.fadein {
+    opacity: 1;
+    transition: all .5s;
+}
+.fadein.ng-hide {
+    opacity: 0;
+    max-height: 0px !important;
+    display: block !important;
 }
