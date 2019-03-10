@@ -5,5 +5,13 @@ block title
 
 block content
     .row.title-content
-        h1 Movie Test APP
-        h4 By Luis Izquierdo
+        h2 Movie Test APP
+    .container-fluid(ng-controller="FavsCtrl", ng-show="favs.length > 0 && loggedUser")
+        h4.favs-title {{ favs.length }} Movies Favourites
+            i.glyphicon.glyphicon-star
+            i.glyphicon.glyphicon-star
+            i.glyphicon.glyphicon-star
+        .fav-container(ng-repeat="movie in favs")
+            .fav
+                a(href="#/detail/{{ movie.imdbID }}", alt="{{ movie.Title }}")
+                    img(src="{{ movie.Poster }}")
