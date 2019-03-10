@@ -1,2 +1,21 @@
 
-<h1>DETAIL</h1>
+<div ng-init="init()" class="container">
+  <div ng-show="!searching" class="well well-sm fadein">
+    <div class="row">
+      <div class="col-sm-3 col-md-4"><img src="{{ movie.Poster }}" alt="{{ movie.Title }}" class="img-responsive"/></div>
+      <div class="col-sm-9 col-md-8">
+        <h3 class="brand-color">{{ movie.Title }}</h3><small>ID: {{ movie.imdbID }}</small>
+        <button ng-click="addToFav(movie.imdbID)" ng-show="!isAdded" class="bnt btn-success btn-block btn-fav">Add to favourites<span class="glyphicon glyphicon-heart"></span></button>
+        <button ng-click="removeToFav(movie.imdbID)" ng-show="isAdded" class="bnt btn-danger btn-block btn-fav">Remove to favourites<span class="glyphicon glyphicon-heart"></span></button>
+        <div class="prop description"><i class="glyphicon glyphicon-chevron-right"> </i><span>{{ movie.Year +', '+ movie.Genre +', '+ movie.Runtime +', '+ movie.Language+', ('+ movie.Country + ')' }}</span></div>
+        <div class="prop"><i class="glyphicon glyphicon-chevron-right"> </i><span>{{ 'Director: ' + movie.Director }}</span></div>
+        <div class="prop"><i class="glyphicon glyphicon-chevron-right"> </i><span>{{ 'Writer: ' + movie.Writer }}</span></div>
+        <div class="prop"><i class="glyphicon glyphicon-chevron-right"> </i><span>{{ 'Actors: ' + movie.Actors }}</span></div>
+        <div class="prop"><i class="glyphicon glyphicon-chevron-right"> </i><span>{{ movie.Plot }}</span></div>
+      </div>
+    </div>
+  </div>
+  <div ng-show="searching" class="container">
+    <div class="row preload"><img src="img/spiner.svg"/></div>
+  </div>
+</div>

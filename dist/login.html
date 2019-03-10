@@ -1,18 +1,19 @@
 
 <div class="row login">
   <div class="header">
-    <h1 class="text-center">Sign In</h1><img src="./img/user-default.png" alt="Avatar" class="profile-img"/>
+    <div ng-show="error.length &gt; 0" class="alert alert-danger">{{ error }}</div>
+    <h1 class="text-center"><img src="./img/logo-2.svg" alt="Logo" class="logo"/><span>Sign In</span></h1><img src="./img/user-default.png" alt="Avatar" class="profile-img"/>
   </div>
   <div class="body">
-    <form action="" class="form col-md-12 center-block">
+    <form ng-submit="login()" class="col-md-12 center-block">
       <div class="form-group">
-        <input type="text" placeholder="Enter your email..." required="required" autofocus="autofocus" class="form-control input-lg"/>
+        <input ng-model="username" type="text" placeholder="Enter your email..." required="required" autofocus="autofocus" class="form-control input-lg"/>
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Enter your password..." required="required" class="form-control input-lg"/>
+        <input ng-model="password" type="password" placeholder="Enter your password..." required="required" class="form-control input-lg"/>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-lg btn-block">Sign In</button><span class="pull-right"><a href="#">Register Now</a></span><span class="pull-left"><a href="#">Forgot your password?</a></span>
+        <button class="btn btn-primary btn-lg btn-block">Sign In<span class="glyphicon glyphicon-log-in"></span></button><span class="pull-left">TestApp </span><span class="pull-right"><a href="https://github.com/megabass00" target="_blank">megabass00</a></span>
       </div>
     </form>
   </div>

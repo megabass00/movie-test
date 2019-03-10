@@ -5,29 +5,34 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
+    <nav ng-controller="NavigationCtrl" class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand"><img src="img/logo.svg"></a>
+          <button data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse"><a href="#" class="navbar-brand logo"><img src="img/logo.svg"></a>
           <ul class="nav navbar-nav">
-            <li><a href="#/login">Login</a></li>
-            <li><a href="#/movies">Movies List</a></li>
-            <li><a href="#/detail">Detail</a></li>
-            <li><a href="#/contact">Contact</a></li>
+            <li ng-show="!loggedUser"><a href="#/login">Login</a></li>
+            <li ng-show="loggedUser"><a ng-click="logout()">Logout</a></li>
+            <li ng-show="loggedUser"><a href="#/movies">Movies List</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/">Right 1</a></li>
-            <li><a href="#/">About</a></li>
+          <ul ng-show="loggedUser" class="nav navbar-nav navbar-right">
+            <li><a>{{ (numFavs > 0) ? numFavs + ' favs' : 'No favs' }}</a></li>
+            <li><a href="#" ng-click="cleanFavs()">Clean Favs</a></li>
+            <li ng-show="loggedUser" class="username">{{ 'Wellcome ' + loggedUser.username }}</li>
           </ul>
         </div>
       </div>
     </nav>
     <div class="container">
       <div class="row title-content">
-        <h1>Movie Test APP</h1>
-        <h4>By Luis Izquierdo</h4>
+        <h2>Movie Test APP</h2>
+      </div>
+      <div ng-controller="FavsCtrl" ng-show="favs.length &gt; 0 &amp;&amp; loggedUser" class="container-fluid">
+        <h4 class="favs-title">{{ favs.length }} Movies Favourites<i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></h4>
+        <div ng-repeat="movie in favs" class="fav-container">
+          <div class="fav"><a href="#/detail/{{ movie.imdbID }}" alt="{{ movie.Title }}"><img src="{{ movie.Poster }}"></a></div>
+        </div>
       </div>
       <div ng-view class="container"></div>
     </div>
