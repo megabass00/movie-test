@@ -1549,8 +1549,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         });
     });
 }();
-angular.module('testMoviesApp', ['ngRoute'])
-.run(['$rootScope', '$location', 'SessionStorage', function($rootScope, $location, SessionStorage) {
+var testMoviesApp = angular.module('testMoviesApp', ['ngRoute'])
+testMoviesApp.run(['$rootScope', '$location', 'SessionStorage', function($rootScope, $location, SessionStorage) {
     $rootScope.apiKey = 'f12ba140';
     $rootScope.apiMoviesURL = 'http://www.omdbapi.com/?apikey=' + $rootScope.apiKey + '&';
     $rootScope.apiSearchURL = 'http://img.omdbapi.com/?apikey=' + $rootScope.apiKey + '&';
@@ -1586,8 +1586,8 @@ angular.module('testMoviesApp', ['ngRoute'])
         .otherwise({
             redirectTo: '/login'
         });
-})
-.factory('LocalStorage', ['$window', function($window) {
+});
+testMoviesApp.factory('LocalStorage', ['$window', function($window) {
     return {
         set: function(key, value) {
             $window.localStorage[key] = value;
@@ -1630,7 +1630,7 @@ angular.module('testMoviesApp', ['ngRoute'])
     return {
         getMovieById: function (imdbID) {
             var favs = LocalStorage.getArray('movies-favourites');
-            return favs.find(x => x.imdbID === imdbID);
+            return favs.find(x => x.imdbID === imdbID); 
         },
         getNumFavs: function() {
             var favs = LocalStorage.getArray('movies-favourites');
@@ -1692,7 +1692,8 @@ angular.module('testMoviesApp', ['ngRoute'])
     };
     return service;
 }])
-.controller('NavigationCtrl', ['$scope', 'Global', function ($scope, Global) {
+
+testMoviesApp.controller('NavigationCtrl', ['$scope', 'Global', function ($scope, Global) {
     $scope.numFavs = Global.getNumFavs();
     $scope.cleanFavs = Global.cleanFavs;
     $scope.logout = function() {
@@ -1746,7 +1747,7 @@ angular.module('testMoviesApp', ['ngRoute'])
     $scope.totalResults = 0;
     $scope.searching = false;
     $scope.error = '';
-    $scope.textToSearch = 'star';
+    $scope.textToSearch = '';
     
     $scope.searchMovies = function() {
         $scope.searching = true;
@@ -1773,8 +1774,11 @@ angular.module('testMoviesApp', ['ngRoute'])
                 $rootScope.movies = [];
             });
     };
-
-    // $scope.addToFav = Global.addToFav;
+    $scope.enterPressed = function(keyEvent) {
+        if (keyEvent.which === 13) {
+            $scope.searchMovies();
+        }
+    }
 }])
 .controller('DetailCtrl', ['$scope', '$rootScope', '$routeParams', '$http', 'Global', 'LocalStorage', function($scope, $rootScope, $routeParams, $http, Global, LocalStorage) {
     $scope.movie = {};
