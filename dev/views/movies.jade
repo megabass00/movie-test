@@ -3,7 +3,7 @@
         .input-group
             span.input-group-addon
                 span.glyphicon.glyphicon-film
-            input.form-control(type="text", placeholder="Search your movie...", ng-model="textToSearch", autofocus)
+            input.form-control(type="text", placeholder="Search your movie...", ng-model="textToSearch", ng-keypress="enterPressed($event)" autofocus)
             span.input-group-btn
                 button.btn.btn-primary(ng-click="searchMovies()") Search
     .col-lg-8.col-lg-offset-2
