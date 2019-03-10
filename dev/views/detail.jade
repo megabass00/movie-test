@@ -1,1 +1,31 @@
-h1 DETAIL
+.container(ng-init="init()")
+    .well.well-sm.fadein(ng-show="!searching")
+        .row
+            .col-sm-3.col-md-4
+                img.img-responsive(src='{{ movie.Poster }}', alt='{{ movie.Title }}')
+            .col-sm-9.col-md-8
+                h3.brand-color {{ movie.Title }}
+                small ID: {{ movie.imdbID }}
+                button.bnt.btn-success.btn-block.btn-fav(ng-click="addToFav(movie.imdbID)", ng-show="!isAdded") Add to favourites
+                    span.glyphicon.glyphicon-heart
+                button.bnt.btn-danger.btn-block.btn-fav(ng-click="removeToFav(movie.imdbID)", ng-show="isAdded") Remove to favourites
+                    span.glyphicon.glyphicon-heart
+                .prop.description
+                    i.glyphicon.glyphicon-chevron-right 
+                    span {{ movie.Year +', '+ movie.Genre +', '+ movie.Runtime +', '+ movie.Language+', ('+ movie.Country + ')' }}
+                .prop
+                    i.glyphicon.glyphicon-chevron-right 
+                    span {{ 'Director: ' + movie.Director }}
+                .prop
+                    i.glyphicon.glyphicon-chevron-right 
+                    span {{ 'Writer: ' + movie.Writer }}
+                .prop
+                    i.glyphicon.glyphicon-chevron-right 
+                    span {{ 'Actors: ' + movie.Actors }}
+                .prop
+                    i.glyphicon.glyphicon-chevron-right 
+                    span {{ movie.Plot }}
+    
+    .container(ng-show="searching")
+        .row.preload
+            img(src="img/spiner.svg")
