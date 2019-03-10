@@ -6,11 +6,13 @@
             input.form-control(type="text", placeholder="Search your movie...", ng-model="textToSearch", autofocus)
             span.input-group-btn
                 button.btn.btn-primary(ng-click="searchMovies()") Search
-
-.container(ng-show="results.length > 0")
-    .card-movie.col-lg-4.col-md-6.col-sm-12(ng-repeat="movie in results")
-        .image
-            img(src="{{ movie.Poster }}")
+    .col-lg-8.col-lg-offset-2
+        span.total-results Total results: {{ totalResults }}
+.container.card-container.fadein(ng-show="movies.length > 0")
+    .card-movie.col-lg-3.col-md-4.col-sm-6(ng-repeat="movie in movies")
+        .poster
+            a(href="#/detail/{{ movie.imdbID }}")
+                img(src="{{ movie.Poster }}")
         .body
             h3.title.brand-color 
                 a(href="#/detail/{{ movie.imdbID }}") {{ movie.Title }}
@@ -23,13 +25,15 @@
             p.year Type
                 br
                 span {{ movie.Type }}
-        .footer
-            a(ng-click="addToFav(movie.imdbID)") Add to favourites
-                i.fas.fa-heart
-                i.far.fa-heart
 
-.container(ng-show="results.length <= 0 && searching")
-    .row.preload Searching...
+.container.no-results(ng-show="movies.length <= 0 && !searching") 
+    span.glyphicon.glyphicon-remove
+    br
+    span No Results
+
+.container(ng-show="searching")
+    .row.preload
+        img(src="img/spiner.svg")
 
 
 
